@@ -84,4 +84,10 @@ public class User {
         this.companyName = companyName;
     }
 
+    @Override
+    public String toString() {
+        return lastName + "|" + firstName + "|" + middleName + "|" + age + "|" + salary +
+                "|" + email + "|" + companyName;
+    }
+
 }
