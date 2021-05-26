@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>info</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Information about user:</h1>
+
+<p th:text="'First name: ' + ${findUser.firstName}"></p>
+<p th:text="'Last name: ' + ${findUser.lastName}"></p>
+<p th:text="'Middle name: ' + ${findUser.middleName}"></p>
+<p th:text="'Age: ' + ${findUser.age}"></p>
+<p th:text="'Salary: ' + ${findUser.salary}"></p>
+<p th:text="'Email: ' + ${findUser.email}"></p>
+<p th:text="'Company Name: ' + ${findUser.companyName}"></p>
+<p th:text="'Time: ' + ${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></p>
+<p th:text="'Browser: ' + ${#httpServletRequest.getHeader('User-Agent')}"></p>
+
+</body>
+<a href="/">To main Page</a>
+</html>
