@@ -48,7 +48,6 @@ public class UserActions {
     public static void add(User user) {
         try (FileWriter writer = new FileWriter("ListOfUsers.txt", true)){
             writer.write(user.toString()+'\n');
-            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
