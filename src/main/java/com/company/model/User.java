@@ -4,20 +4,21 @@ import javax.validation.constraints.*;
 
 public class User {
 
-    @Pattern(regexp = "[a-zA-Z]")
+    @Pattern(regexp = "[a-zA-Z]{2,20}")
     @NotBlank
     private String lastName;
 
-    @Pattern(regexp = "[a-zA-Z]")
+    @Pattern(regexp = "[a-zA-Z]{2,20}")
     @NotBlank
     private String firstName;
 
-    @Pattern(regexp = "[a-zA-Z]")
+    @Pattern(regexp = "[a-zA-Z]{2,20}")
     @NotBlank
     private String middleName;
 
     @Min(14)
     @Max(70)
+    @NotNull
     private int age;
 
     private double salary;
@@ -25,7 +26,7 @@ public class User {
     @Email
     private String email;
 
-    @Pattern(regexp = "[a-zA-Z]")
+    @Pattern(regexp = "[a-zA-Z]{2,20}")
     private String companyName;
 
     public String getLastName() {
@@ -83,10 +84,10 @@ public class User {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
+    
     @Override
     public String toString() {
-        return lastName + "|" + firstName + "|" + middleName + "|" + age + "|" + salary +
+        return firstName + "|" + lastName + "|" + middleName + "|" + age + "|" + salary +
                 "|" + email + "|" + companyName;
     }
 
