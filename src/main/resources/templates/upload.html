@@ -1,0 +1,21 @@
+<html>
+<body>
+
+<p>The file should be executed as follows:
+    Andrey|Ulyanov|Vadimovich|23|47000.0|andrejuly@yandex.ru|Gazprom
+</p>
+<p>And the following requirements must be met:
+</p>
+<li>first/middle/last name and company name must have English layout and number of characters from 2 to 20</li>
+<li>age from 14 to 70</li>
+<li>any salary</li>
+<li>email format</li>
+
+<form method="POST" enctype="multipart/form-data"
+      action="/upload">
+    File to upload: <input type="file" name="file">
+    <br> <br>
+    <input type="submit" value="Upload"> Press here to upload the file!
+</form>
+</body>
+</html>
