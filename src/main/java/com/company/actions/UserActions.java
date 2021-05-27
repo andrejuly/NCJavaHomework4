@@ -2,24 +2,19 @@ package com.company.actions;
 
 import com.company.model.SearchedUser;
 import com.company.model.User;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class UserActions {
 
-    public void addUserFromFile() {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("ListOfUsers.txt"));
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                String[] userInfo = line.split("\\|");
-                User user = new User();
-                setPropertiesUser(user, userInfo);
-                line = bufferedReader.readLine();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    public static void addUserFromFile(MultipartFile file) {
+        try (BufferedOutputStream stream =
+                     new BufferedOutputStream(new FileOutputStream(
+                             new File("ListOfUsers.txt"), true))) {
+            byte[] bytes = file.getBytes();
+            stream.write(bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,21 +28,19 @@ public class UserActions {
                 String[] dataUser = search.split("\\|");
                 if (dataUser[0].equals(searchedUser.getFirstName()) && dataUser[1].equals(searchedUser.getLastName())) {
                     User user = new User();
-                    setPropertiesUser(user,dataUser);
+                    setPropertiesUser(user, dataUser);
                     return user;
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }  catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     public static void add(User user) {
-        try (FileWriter writer = new FileWriter("ListOfUsers.txt", true)){
-            writer.write(user.toString()+'\n');
+        try (FileWriter writer = new FileWriter("ListOfUsers.txt", true)) {
+            writer.write(user.toString() + '\n');
         } catch (IOException e) {
             e.printStackTrace();
         }
