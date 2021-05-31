@@ -16,7 +16,8 @@
 <p th:text="'Company Name: ' + ${findUser.companyName}"></p>
 <p th:text="'Time: ' + ${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></p>
 <p th:text="'Browser: ' + ${#httpServletRequest.getHeader('User-Agent')}"></p>
-
-</body>
+<br>
+<p><a href="/send">Send mail to this user</a></p>
 <a href="/">To main Page</a>
+</body>
 </html>
