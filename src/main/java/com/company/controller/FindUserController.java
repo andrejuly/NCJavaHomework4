@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.actions.UserActions;
+import com.company.model.Mail;
 import com.company.model.SearchedUser;
 import com.company.model.User;
 
@@ -36,6 +37,7 @@ public class FindUserController {
                 return "error";
             }
             else {
+                Mail.setTo(findUser.getEmail());
                 model.addAttribute("findUser", findUser);
                 model.addAttribute("localDateTime", LocalDateTime.now());
                 return "info";
